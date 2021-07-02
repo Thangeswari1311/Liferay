@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-127890191-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() { dataLayer.push(arguments); }
+            gtag('js', new Date());
+    
+            gtag('config', 'UA-127890191-1');
+        </script>    
+        <link rel="shortcut icon" href="/Content/img/OrgChartJS-icon.png" />
+        <link rel="icon" href="/Content/img/OrgChartJS-icon.png" type="image/x-icon" />
+        <style>
+            html, body {
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: Helvetica;
+}
+
+#tree {
+    width: 100%;
+    height: 100%;
+}
+
+
+            html,
+            body {
+                padding: 0;
+                margin: 0;
+                height: 100%;
+                overflow: hidden;
+                font-family: Helvetica, Arial, sans-serif;
+            }
+            .btns {
+                width: 200px;
+                z-index: 500000;
+                position: absolute;
+                bottom: 30px;
+                left: 20px;
+                text-align: center;
+            }
+
+            .getting-started {
+                width: 100%;
+                height: 40px;
+                background-color: #039be5;
+                color: #fff;
+                cursor: pointer;
+                border-radius: 20px;
+            }
+        
+                .getting-started svg {
+                    float: left;
+                }
+        
+                .getting-started span {
+                    display: inline-block;
+                    padding-top: 13px;
+                }
+    
+            .show-jsfiddle {
+                width: 100%;
+                height: 40px;
+                background-color: #F57C00;
+                color: #fff;
+                cursor: pointer;
+                border-radius: 20px;
+            }
+    
+                .show-jsfiddle svg {
+                    float: left;
+                }
+    
+                .show-jsfiddle span {
+                    display: inline-block;
+                    padding-top: 13px;
+                }
+                
+                .show-description {
+                    text-align: left;
+                    color: #757575;
+                }
+            </style>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() { dataLayer.push(arguments); }
+            gtag('js', new Date());
+    
+            gtag('config', 'UA-127890191-1');
+        </script>  
+    </head>
+    <body>
+        
+<link href="https://fonts.googleapis.com/css?family=Gochi+Hand" rel="stylesheet">
+
+<script src="https://balkangraph.com/js/latest/OrgChart.js"></script>
+
+<div id="tree"></div>
+        <script>
+        window.onload = function () { 
+
+    var familyGroupTag = {
+        group: true,
+        template: "group"
+    };
+    
+    var familyGroupTag3 = {
+        group: true,
+        template: "group3"
+    };
+    
+    OrgChart.templates.group.link = '<path stroke-linejoin="round" stroke="#aeaeae" stroke-width="1px" fill="none" d="M{xa},{ya} {xb},{yb} {xc},{yc} L{xd},{yd}"/>';
+    btnMinimize = 
+                '<svg fill="#aeaeae" x="410" y="17" height="24" width="24" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"' +
+                    'viewBox="0 0 485 485" style="enable-background:new 0 0 485 485;" xml:space="preserve">' +
+                '</svg>';
+    btnMaximize = 
+                '<svg fill="#aeaeae" x="198" y="47" height="24" width="24" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"' +
+                    'viewBox="0 0 485 485" style="enable-background:new 0 0 485 485;" xml:space="preserve">' +
+                '</svg>';
+    btnMinimize3 = 
+                '<svg fill="#aeaeae" x="630" y="17" height="24" width="24" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"' +
+                    'viewBox="0 0 485 485" style="enable-background:new 0 0 485 485;" xml:space="preserve">' +   
+                '</svg>';      
+                
+            OrgChart.templates.group.min = Object.assign({}, OrgChart.templates.group);
+            OrgChart.templates.group.min.name = '<text width="230" text-overflow="multiline" style="font-size: 24px;" fill="#aeaeae" x="125" y="65" text-anchor="middle">{val}</text>';
+            OrgChart.templates.group.minBtn = btnMinimize;
+            OrgChart.templates.group3 = Object.assign({}, OrgChart.templates.group);
+            OrgChart.templates.group3.minBtn = btnMinimize3 ;
+            OrgChart.templates.group.min.maxBtn = btnMaximize;
+    
+    var chart = new OrgChart(document.getElementById("tree"), {
+        template: "diva",
+        enableDragDrop: true,
+        nodeBinding: {
+            field_0: "name",
+            field_1: "title",
+            img_0: "img",
+            minBtn: "id",
+            maxBtn: "id"
+        },
+        tags: {
+            f1: familyGroupTag,
+            f2: familyGroupTag,
+            f3: familyGroupTag3,
+            f4: familyGroupTag,
+            f5: familyGroupTag
+        },
+    
+    });
+    
+    nodes = [
+            { id: "f1", tags: ["f1"] },
+            { id: 1, stpid: "f1", name: "FirstName LastName", title: "Great Grand Dad", img: "https://cdn.balkan.app/shared/male.png" },
+            { id: 2, stpid: "f1", name: "FirstName LastName", title: "Great Grand Mother", img: "https://cdn.balkan.app/shared/female.png" },
+            { id: "f2", pid: "f1", tags: ["f2"] },
+            { id: 3, stpid: "f2", pid: 2, name: "FirstName LastName", title: "Grand Dad", img: "https://cdn.balkan.app/shared/male.png" },
+            { id: 4, stpid: "f2", pid: 2, name: "FirstName LastName", title: "Grand Mother", img: "https://cdn.balkan.app/shared/female.png" },
+            { id: 5, pid: "f1", name: "FirstName LastName", title: "Grand Dad Brother", img: "https://cdn.balkan.app/shared/male.png" },
+            { id: "f3", pid: "f2", tags: ["f3"] },
+            { id: 6, stpid: "f3", name: "FirstName LastName", title: "Dad", img: "https://cdn.balkan.app/shared/male.png" },
+            { id: 7, stpid: "f3", name: "FirstName LastName", title: "Mother", img: "https://cdn.balkan.app/shared/female.png" },
+            { id: 9, pid: "f2", name: "FirstName LastName", title: "Dad's Sister", img: "https://cdn.balkan.app/shared/female.png" },
+            { id: 10, pid: "f2", name: "FirstName LastName", title: "Dad's Younger Brother", img: "https://cdn.balkan.app/shared/male.png" },
+            { id: "f4", pid: "f3", tags: ["f4"] },
+            { id: 11, stpid: "f4", name: "FirstName LastName", title: "Myself", img: "https://cdn.balkan.app/shared/male.png" },
+            { id: 12, stpid: "f4", name: "FirstName LastName", title: "Myspouse", img: "https://cdn.balkan.app/shared/female.png" },
+            { id: 13, pid: "f3", name: "FirstName LastName", title: "Elder Brother", img: "https://cdn.balkan.app/shared/female.png" },
+            { id: 14, pid: "f3", name: "FirstName LastName", title: "Younger Brother", img: "https://cdn.balkan.app/shared/male.png" },
+            { id: 15, pid: "f3", name: "FirstName LastName", title: "Younger Sister", img: "https://cdn.balkan.app/shared/male.png" },
+            { id: 16, pid: "f4", name: "FirstName LastName", title: "Elder daughter", img: "https://cdn.balkan.app/shared/male.png" },
+            { id: 17, pid: "f4", name: "FirstName LastName", title: "Younger son", img: "https://cdn.balkan.app/shared/male.png" },
+            { id: 18, pid: "f4", name: "FirstName LastName", title: "Younger daughter", img: "https://cdn.balkan.app/shared/female.png" }
+        ];
+    
+        
+        chart.on('redraw', (sender) => {
+                    let minBtns = document.querySelectorAll('*[data-btn-min]');
+    
+                    minBtns.forEach(btn => {
+                        btn.addEventListener('click', (e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            chart.minimize(btn.getAttribute('data-btn-min'));
+                        });
+                    });
+    
+                    let maxBtns = document.querySelectorAll('*[data-btn-max]');
+    
+                    maxBtns.forEach(btn => {
+                        btn.addEventListener('click', (e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            chart.maximize(btn.getAttribute('data-btn-max'));
+                        });
+                    });
+    
+                });
+    
+    
+        chart.load(nodes);
+    
+    };
+        </script>
+
+        <script>
+
+           var link = window.location.pathname;
+
+           // for localhost
+         //  var current = (link.slice(0, -5)).substring(1);
+
+
+
+        //    if (link.substring(link.length - 5) == ".html") {
+        //     var current = (link.slice(0, -5)).substring(1);
+        //    }    
+        //     else current = link.substring(1);
+
+
+          if (link.substring(link.length - 5) == ".html") {
+           var current = (link.slice(0, -5)).substring(18);
+          }    
+           else current = link.substring(18);
+
+
+           var showjsfiddle = document.querySelector('.show-jsfiddle');
+           
+           if (showjsfiddle) {
+               showjsfiddle.addEventListener('click', function () {
+                   if (current) {
+                       window.open('https://jsfiddle.net/gh/get/library/pure/BALKANGraph/orgchartjs-demos/tree/master/' + current);
+                   }
+               });
+           }
+
+            var showdocs = document.querySelector('.getting-started');
+            if (showdocs) {
+                showdocs.addEventListener('click', function () {
+                    window.open('https://balkan.app/OrgChartJS/Docs/GettingStarted');
+                });
+            }
+
+            var showdescription = document.querySelector('.show-description');
+            showdescription.innerHTML = "This OrgChart JS example demonstrates Family Tree created using groups.";
+            // showdescription.innerHTML = alldemos[id].description;
+
+        </script>
+    </body>
+    </html>
